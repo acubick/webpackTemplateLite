@@ -11,6 +11,10 @@
     "start": "NODE_ENV=development webpack-dev-server --mode=development",
     "start:open": "NODE_ENV=development webpack-dev-server --mode=development --open"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acubick/webpackTemplateLitete.git"
+  },
   "keywords": [
     "webpack"
   ],

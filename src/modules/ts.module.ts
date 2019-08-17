@@ -1,4 +1,4 @@
-const field: string = 'Hello Typescrip!'
+const field: string = 'Hello Typescript!'
 
 interface WFM {
 	field: string
