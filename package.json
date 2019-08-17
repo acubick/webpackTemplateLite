@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/acubick/webpackTemplateLitete.git"
+    "url": "git+https://github.com/acubick/webpackTemplateLite.git"
   },
   "keywords": [
     "webpack"
