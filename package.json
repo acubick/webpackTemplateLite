@@ -1,0 +1,43 @@
+{
+  "name": "webpacktemplite",
+  "version": "1.0.0",
+  "description": "webpack lite",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development webpack --mode=development",
+    "dev:watch": "NODE_ENV=development webpack --mode=development --watch",
+    "build:prod": "NODE_ENV=production webpack --mode=production",
+    "build:start": "NODE_ENV=production webpack-dev-server --mode=production",
+    "start": "NODE_ENV=development webpack-dev-server --mode=development",
+    "start:open": "NODE_ENV=development webpack-dev-server --mode=development --open"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "acubick",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "sass-loader": "^7.2.0",
+    "style-loader": "^1.0.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.8.0",
+    "webpackbar": "^4.0.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4"
+  }
+}

@@ -1,0 +1,24 @@
+*{
+	padding : 0;
+	margin : 0;
+	box-sizing : border-box;
+}
+
+header{
+	min-height: 200px;
+	width : 100%;
+	background-color : red;
+}
+
+main{
+	min-height: 50vh;
+	width : 100%;
+	
+	background-color : green;
+}
+
+footer{
+	min-height: 100px;
+	width : 100%;
+	background-color : grey;
+}
