@@ -6,11 +6,15 @@
   "scripts": {
     "dev": "NODE_ENV=development webpack --mode=development",
     "dev:watch": "NODE_ENV=development webpack --mode=development --watch",
-    "build:prod": "NODE_ENV=production webpack --mode=production",
+    "build": "NODE_ENV=production webpack --mode=production",
     "build:start": "NODE_ENV=production webpack-dev-server --mode=production",
     "start": "NODE_ENV=development webpack-dev-server --mode=development",
     "start:open": "NODE_ENV=development webpack-dev-server --mode=development --open"
   },
+  "browserslist": [
+    "> 1%",
+    "last 3 version"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/acubick/webpackTemplateLite.git"
@@ -25,14 +29,23 @@
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-typescript": "^7.3.3",
+    "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
+    "css-mqpacker": "^7.0.0",
+    "cssnano": "^4.1.10",
+    "file-loader": "^4.2.0",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^5.0.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss": "^7.0.17",
+    "postcss-loader": "^3.0.0",
     "sass-loader": "^7.2.0",
     "style-loader": "^1.0.0",
     "uglifyjs-webpack-plugin": "^2.2.0",

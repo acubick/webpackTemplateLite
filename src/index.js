@@ -8,5 +8,5 @@ import { config } from './modules/config'
 
 console.log('Config key:', config.key)
 
-const service = new AppService('Hello world!')
+const service = new AppService('Hello worggggSS!')
 service.log()

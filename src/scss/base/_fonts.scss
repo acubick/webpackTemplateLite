@@ -1,0 +1,8 @@
+// -----------------------------------------------------------------------------
+// This file contains all @font-face declarations, if any.
+// -----------------------------------------------------------------------------
+// @import "../abstracts/font-face";
+/// test sassdoc
+/// @author acubick
+@include font-face("roboto-example", "../fonts/RobotoRegular/RobotoRegular");
+@include font-face("roboto-example-bold", "../fonts/RobotoBold/RobotoBold", bold);

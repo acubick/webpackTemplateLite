@@ -1,7 +1,13 @@
-$color : #555678;
+@import "abstracts/variables",
+"abstracts/mixins",
+"abstracts/functions",
+"abstracts/fonts",
+"base/fonts";
+
+$color      : #555678;
 $color-text : #25ff24;
 
-$innert: 35px;
+$innert     : 35px;
 
 
 .box {
@@ -9,14 +15,20 @@ $innert: 35px;
   color            : $color;
   width            : 80%;
   height           : 200px;
-  margin: 0 auto;
-  &-inner{
+  margin           : 0 auto;
+  font-family      : "roboto-example-bold";
+  
+  &-inner {
 	background-color : blue;
-	min-width : $innert;
-	min-height : $innert;
+	min-width        : $innert;
+	min-height       : $innert;
   }
-  &-text{
-	 color: $color-text;
+  
+  &-text {
+	color            : $color-text;
 	background-color : #ff00e8;
+	font-family      : "roboto-example";
+	
   }
 }
+@import "layouts/footer";
