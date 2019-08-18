@@ -38,7 +38,17 @@ module.exports = {
 			{
 				test: /\.css$/i,
 //				use:  [ 'style-loader', 'css-loader' ]
-				use:  [ MiniCssExtractPlugin.loader, 'css-loader' ]
+				use:  [ MiniCssExtractPlugin.loader,
+				        {
+					        loader:  'css-loader',
+					        options: {}
+				        }
+				]
+			},
+			{
+				test:    /\.js$/,
+				exclude: /node_modules/,
+				loader:  'babel-loader'
 			}
 		]
 	}

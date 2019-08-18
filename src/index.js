@@ -1,4 +1,4 @@
-//import 'jquery'
+import 'jquery'
 import './css/index.css'
 //import './scss/index.scss'
 //import './less/index.less'
@@ -12,6 +12,6 @@ import './css/index.css'
 //const service = new AppService('Hello worggggSS!')
 //service.log()
 
-//const $head = document.getElementsByTagName('header')
-//console.log('head jquery work',  $head )
+const $head = document.getElementsByTagName('header')
+console.log('head jquery work',  $head )
 console.log('hi')
