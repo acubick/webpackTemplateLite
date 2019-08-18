@@ -1,68 +1,67 @@
-const path                    = require( 'path' )
-const WebpackBar              = require( 'webpackbar' )
-const webpack                 = require( 'webpack' )
-const HTMLPlugin              = require( 'html-webpack-plugin' )
-const MiniCssExtractPlugin    = require( 'mini-css-extract-plugin' )
-const htmlLoader              = require( 'html-loader' )
+const path                 = require( 'path' )
+const WebpackBar           = require( 'webpackbar' )
+const webpack              = require( 'webpack' )
+const HTMLPlugin           = require( 'html-webpack-plugin' )
+const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' )
+const htmlLoader           = require( 'html-loader' )
 
-const { CleanWebpackPlugin }  = require( 'clean-webpack-plugin' )
-const CopyWebpackPlugin       = require( 'copy-webpack-plugin' )
+const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' )
+const CopyWebpackPlugin      = require( 'copy-webpack-plugin' )
 
 console.info( 'process.env.NODE_ENV: >>>>======>>>>>> ', process.env.NODE_ENV )
 const PATHS = {
-	src:    path.join( __dirname, '..','src' ),
-	dist:   path.join( __dirname, '..','dist' ),
+	src:    path.join( __dirname, '..', 'src' ),
+	dist:   path.join( __dirname, '..', 'dist' ),
 	assets: 'assets/'
 }
 //console.log('>>>>>>>>', path.join( __dirname, '..', 'dist' ) )
-console.log('>>>>>>>>', `${ PATHS.dist }/assets/css/[name].css` )
-
+//console.log('>>>>>>>>', `${ PATHS.dist }/assets/css/[name].css` )
 
 module.exports = {
-	entry:        PATHS.src,
-	output:       {
+	entry:   PATHS.src,
+	output:  {
 		path:              PATHS.dist,
 		filename:          `${ PATHS.assets }js/[name].js`,
 		sourceMapFilename: '[name].js.map',
 		publicPath:        '/'
 	},
-	plugins:      [
+	plugins: [
 		new CleanWebpackPlugin(),
 		new WebpackBar(),
 		new HTMLPlugin( {
 			template: `${ PATHS.src }/index.html`,
-			filename: 'index.html',
+			filename: 'index.html'
 			
 			//отключаем вставку в файл
 //			inject: false
 		} ),
 		new MiniCssExtractPlugin( {
-			filename: `${ PATHS.dist }/assets/css/[name].css`
+			filename: `/assets/css/[name].css`
 		} ),
-	//	для полного билда закоментировать нижний плагин
+		//	для полного билда закоментировать нижний плагин
 		new webpack.SourceMapDevToolPlugin( {
 			filename: '[file].map'
 		} ),
 		new CopyWebpackPlugin( [
 			{
-				from: `${ PATHS.src }/${ PATHS.assets }img/`,
-				to:   `${ PATHS.dist }/${ PATHS.assets }img/[name].[ext]`
+				from: `${ PATHS.src }/assets/img/`,
+				to:   `${ PATHS.dist }/assets/img/[name].[ext]`
 			}
 		] )
 	],
-	resolve:      {
+	resolve: {
 		extensions: [ '.js', '.ts' ]
 	},
-	module:       {
+	module:  {
 		rules: [
 			{
 				test: /\.css$/,
 				use:  [
-//					process.env.NODE_ENV !== 'production'
-//					?
-						'style-loader',
-//					:
-//					MiniCssExtractPlugin.loader,
+					process.env.NODE_ENV !== 'production'
+					?
+					'style-loader'
+					:
+					MiniCssExtractPlugin.loader,
 					{
 						loader:  'css-loader',
 						options: { sourceMap: true }
@@ -74,7 +73,7 @@ module.exports = {
 				use:  [
 					process.env.NODE_ENV !== 'production'
 					?
-						'style-loader'
+					'style-loader'
 					:
 					MiniCssExtractPlugin.loader,
 					{
@@ -103,7 +102,7 @@ module.exports = {
 				use:  [
 					process.env.NODE_ENV !== 'production'
 					?
-						'style-loader'
+					'style-loader'
 					:
 					MiniCssExtractPlugin.loader,
 					{
@@ -177,3 +176,4 @@ module.exports = {
 		]
 	}
 }
+     //TODO: при dev сборке не показывается css файл и нет  sourcemap
