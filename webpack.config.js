@@ -64,12 +64,39 @@ module.exports = {
 				        }
 				]
 			},
+//			{
+//				test: /\.scss$/,
+//				use:  [
+//					'style-loader', // creates style nodes from JS strings
+//					'css-loader', // translates CSS into CommonJS
+//					'sass-loader' // compiles Sass to CSS, using Node Sass by default
+//				]
+//			},
 			{
-				test: /\.scss$/,
+				test: /\.(sa|sc)ss$/,
 				use:  [
-					'style-loader', // creates style nodes from JS strings
-					'css-loader', // translates CSS into CommonJS
-					'sass-loader' // compiles Sass to CSS, using Node Sass by default
+					process.env.NODE_ENV !== 'production'
+					? 'style-loader'
+					: MiniCssExtractPlugin.loader,
+					{
+						loader:  'css-loader',
+						options: {
+							sourceMap: true
+						}
+					},
+					{
+						loader:  'postcss-loader',
+						options: {
+							sourceMap: true,
+							config:    { path: `./postcss.config.js` }
+						}
+					},
+					{
+						loader:  'sass-loader',
+						options: {
+							sourceMap: true
+						}
+					}
 				]
 			},
 			{
