@@ -17,7 +17,7 @@ const PATHS = {
 module.exports = {
 	entry:        PATHS.src,
 	output:       {
-		filename:   `${ PATHS.assets }js/[name].js`,
+		filename:   `${ PATHS.assets }js/[name].[hash].js`,
 		path:       PATHS.dist,
 		publicPath: '/'
 	},
@@ -54,7 +54,7 @@ module.exports = {
 			template: `${ PATHS.src }/index.html`
 		} ),
 		new MiniCssExtractPlugin( {
-			filename: `${ PATHS.assets }css/[name].css`
+			filename: `${ PATHS.assets }css/[name].[hash].css`
 		} ),
 		new CopyWebpackPlugin( [
 			{
