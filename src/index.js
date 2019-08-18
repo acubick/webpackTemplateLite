@@ -1,7 +1,7 @@
 import 'jquery'
 import './css/index.css'
 import './scss/index.scss'
-import './less/index.less'
+//import './less/index.less'
 import './modules/ts.module'
 import AppService from './modules/app.service'
 import { config } from './modules/config'

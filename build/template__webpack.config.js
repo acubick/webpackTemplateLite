@@ -1,4 +1,3 @@
-/*
 const path                    = require( 'path' )
 const WebpackBar              = require( 'webpackbar' )
 const webpack                 = require( 'webpack' )
@@ -13,8 +12,8 @@ const CopyWebpackPlugin       = require( 'copy-webpack-plugin' )
 console.info( 'process.env.NODE_ENV: >>>>======>>>>>> ', process.env.NODE_ENV )
 
 const PATHS = {
-	src:    path.join( __dirname, 'src' ),
-	dist:   path.join( __dirname, 'dist' ),
+	src:    path.join( __dirname, '..','src' ),
+	dist:   path.join( __dirname, '..','dist' ),
 	assets: 'assets/'
 }
 
@@ -46,9 +45,9 @@ module.exports = {
 			filename: `${ PATHS.assets }css/[name].css`
 		} ),
 		//для полного билда закоментировать нижний плагин
-		new webpack.SourceMapDevToolPlugin( {
-			filename: '[file].map'
-		} ),
+//		new webpack.SourceMapDevToolPlugin( {
+//			filename: '[file].map'
+//		} ),
 		new CopyWebpackPlugin( [
 			{
 				from: `${ PATHS.src }/assets/img/`,
@@ -177,4 +176,3 @@ module.exports = {
 		]
 	}
 }
-*/

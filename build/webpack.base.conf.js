@@ -4,8 +4,7 @@ const webpack                 = require( 'webpack' )
 const HTMLPlugin              = require( 'html-webpack-plugin' )
 const MiniCssExtractPlugin    = require( 'mini-css-extract-plugin' )
 const htmlLoader              = require( 'html-loader' )
-const OptimizeCssAssetsPlugin = require( 'optimize-css-assets-webpack-plugin' )
-const UglifyJsPlugin          = require( 'uglifyjs-webpack-plugin' )
+
 const { CleanWebpackPlugin }  = require( 'clean-webpack-plugin' )
 const CopyWebpackPlugin       = require( 'copy-webpack-plugin' )
 
@@ -26,22 +25,6 @@ module.exports = {
 		sourceMapFilename: '[name].js.map',
 		publicPath:        '/'
 	},
-	//	devtool: "source-map",
-
-	optimization: {
-		minimizer: [ new OptimizeCssAssetsPlugin( {} ), new UglifyJsPlugin( {} ) ],
-		splitChunks: {
-			cacheGroups: {
-				vendor:{
-					name: 'vendors',
-					test: /node_modules/,
-					chunks: 'all',
-					enforce: true
-				}
-			}
-		}
-		
-	},
 	plugins:      [
 		new CleanWebpackPlugin(),
 		new WebpackBar(),
@@ -56,9 +39,9 @@ module.exports = {
 			filename: `${ PATHS.assets }css/[name].css`
 		} ),
 		//для полного билда закоментировать нижний плагин
-		new webpack.SourceMapDevToolPlugin( {
-			filename: '[file].map'
-		} ),
+//		new webpack.SourceMapDevToolPlugin( {
+//			filename: '[file].map'
+//		} ),
 		new CopyWebpackPlugin( [
 			{
 				from: `${ PATHS.src }/${ PATHS.assets }img/`,
@@ -74,9 +57,11 @@ module.exports = {
 			{
 				test: /\.css$/,
 				use:  [
-					process.env.NODE_ENV !== 'production'
-					? 'style-loader'
-					: MiniCssExtractPlugin.loader,
+//					process.env.NODE_ENV !== 'production'
+//					?
+						'style-loader',
+//					:
+//					MiniCssExtractPlugin.loader,
 					{
 						loader:  'css-loader',
 						options: { sourceMap: true }
@@ -86,22 +71,24 @@ module.exports = {
 			{
 				test: /\.(sa|sc)ss$/,
 				use:  [
-					process.env.NODE_ENV !== 'production'
-					? 'style-loader'
-					: MiniCssExtractPlugin.loader,
+//					process.env.NODE_ENV !== 'production'
+//					?
+						'style-loader',
+//					:
+//					MiniCssExtractPlugin.loader,
 					{
 						loader:  'css-loader',
 						options: {
 							sourceMap: true
 						}
 					},
-					{
-						loader:  'postcss-loader',
-						options: {
-							sourceMap: true,
-							config:    { path: `./postcss.config.js` }
-						}
-					},
+//					{
+//						loader:  'postcss-loader',
+//						options: {
+//							sourceMap: true,
+//							config:    { path: `./postcss.config.js` }
+//						}
+//					},
 					{
 						loader:  'sass-loader',
 						options: {
@@ -113,9 +100,11 @@ module.exports = {
 			{
 				test: /\.less$/,
 				use:  [
-					process.env.NODE_ENV !== 'production'
-					? 'style-loader'
-					: MiniCssExtractPlugin.loader,
+//					process.env.NODE_ENV !== 'production'
+//					?
+						'style-loader' ,
+//					:
+//					MiniCssExtractPlugin.loader,
 					{
 						loader:  'css-loader',
 						options: {
