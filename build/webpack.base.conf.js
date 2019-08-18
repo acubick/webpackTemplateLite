@@ -9,12 +9,13 @@ const { CleanWebpackPlugin }  = require( 'clean-webpack-plugin' )
 const CopyWebpackPlugin       = require( 'copy-webpack-plugin' )
 
 console.info( 'process.env.NODE_ENV: >>>>======>>>>>> ', process.env.NODE_ENV )
-//console.log('>>>>>>>>', path.join( __dirname, '..', 'dist' ) )
 const PATHS = {
 	src:    path.join( __dirname, '..','src' ),
 	dist:   path.join( __dirname, '..','dist' ),
 	assets: 'assets/'
 }
+//console.log('>>>>>>>>', path.join( __dirname, '..', 'dist' ) )
+console.log('>>>>>>>>', `${ PATHS.dist }/assets/css/[name].css` )
 
 
 module.exports = {
@@ -36,12 +37,12 @@ module.exports = {
 //			inject: false
 		} ),
 		new MiniCssExtractPlugin( {
-			filename: `${ PATHS.assets }css/[name].css`
+			filename: `${ PATHS.dist }/assets/css/[name].css`
 		} ),
-		//для полного билда закоментировать нижний плагин
-//		new webpack.SourceMapDevToolPlugin( {
-//			filename: '[file].map'
-//		} ),
+	//	для полного билда закоментировать нижний плагин
+		new webpack.SourceMapDevToolPlugin( {
+			filename: '[file].map'
+		} ),
 		new CopyWebpackPlugin( [
 			{
 				from: `${ PATHS.src }/${ PATHS.assets }img/`,
@@ -71,24 +72,24 @@ module.exports = {
 			{
 				test: /\.(sa|sc)ss$/,
 				use:  [
-//					process.env.NODE_ENV !== 'production'
-//					?
-						'style-loader',
-//					:
-//					MiniCssExtractPlugin.loader,
+					process.env.NODE_ENV !== 'production'
+					?
+						'style-loader'
+					:
+					MiniCssExtractPlugin.loader,
 					{
 						loader:  'css-loader',
 						options: {
 							sourceMap: true
 						}
 					},
-//					{
-//						loader:  'postcss-loader',
-//						options: {
-//							sourceMap: true,
-//							config:    { path: `./postcss.config.js` }
-//						}
-//					},
+					{
+						loader:  'postcss-loader',
+						options: {
+							sourceMap: true,
+							config:    { path: `./postcss.config.js` }
+						}
+					},
 					{
 						loader:  'sass-loader',
 						options: {
@@ -100,11 +101,11 @@ module.exports = {
 			{
 				test: /\.less$/,
 				use:  [
-//					process.env.NODE_ENV !== 'production'
-//					?
-						'style-loader' ,
-//					:
-//					MiniCssExtractPlugin.loader,
+					process.env.NODE_ENV !== 'production'
+					?
+						'style-loader'
+					:
+					MiniCssExtractPlugin.loader,
 					{
 						loader:  'css-loader',
 						options: {
