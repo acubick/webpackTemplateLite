@@ -18,6 +18,9 @@ $innert     : 35px;
   margin           : 0 auto;
   font-family      : "roboto-example-bold";
   
+  display : flex;
+  flex-direction: column;
+  
   &-inner {
 	background-color : blue;
 	min-width        : $innert;

@@ -1,3 +1,4 @@
+import 'jquery'
 import './css/index.css'
 import './scss/index.scss'
 import './less/index.less'
@@ -10,3 +11,6 @@ console.log('Config key:', config.key)
 
 const service = new AppService('Hello worggggSS!')
 service.log()
+
+const $head = document.getElementsByTagName('header')
+console.log('head jquery work',  $head )
