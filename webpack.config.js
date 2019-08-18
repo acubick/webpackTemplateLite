@@ -34,7 +34,17 @@ module.exports = {
 	optimization: {
 		minimizer: [ new TerserPlugin(),
 		             new OptimizeCssAssetsPlugin( {} )
-		]
+		],
+		splitChunks: {
+			cacheGroups: {
+				vendor:{
+					name: 'vendors',
+					test: /node_modules/,
+					chunks: 'all',
+					enforce: true
+				}
+			}
+		}
 	},
 	plugins:      [
 		new CleanWebpackPlugin(),
@@ -99,6 +109,7 @@ module.exports = {
 			{
 				test: /\.less$/,
 				use:  [
+					//выключил потому что перебивает все sourcemap
 //					process.env.NODE_ENV !== 'production'
 //					? 'style-loader'
 //					:
