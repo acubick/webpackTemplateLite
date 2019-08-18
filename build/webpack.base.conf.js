@@ -36,7 +36,8 @@ module.exports = {
 //			inject: false
 		} ),
 		new MiniCssExtractPlugin( {
-			filename: `/assets/css/[name].css`
+			filename: 'bundle.css'
+//			filename: `/assets/css/[name].css`
 		} ),
 		//	для полного билда закоментировать нижний плагин
 		new webpack.SourceMapDevToolPlugin( {
