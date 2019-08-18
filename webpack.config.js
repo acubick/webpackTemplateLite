@@ -1,4 +1,5 @@
 const path                    = require( 'path' )
+const webpack                 = require( 'webpack' )
 const WebpackBar              = require( 'webpackbar' )
 HtmlWebpackPlugin             = require( 'html-webpack-plugin' )
 const MiniCssExtractPlugin    = require( 'mini-css-extract-plugin' )
@@ -50,7 +51,11 @@ module.exports = {
 				from: `${ PATHS.src }/assets/img/`,
 				to:   `${ PATHS.dist }/assets/img/[name].[ext]`
 			}
-		] )
+		] ),
+		//для полного билда закоментировать нижний плагин
+		new webpack.SourceMapDevToolPlugin( {
+			filename: '[file].map'
+		} )
 	],
 	module:       {
 		rules: [
@@ -64,14 +69,6 @@ module.exports = {
 				        }
 				]
 			},
-//			{
-//				test: /\.scss$/,
-//				use:  [
-//					'style-loader', // creates style nodes from JS strings
-//					'css-loader', // translates CSS into CommonJS
-//					'sass-loader' // compiles Sass to CSS, using Node Sass by default
-//				]
-//			},
 			{
 				test: /\.(sa|sc)ss$/,
 				use:  [
@@ -93,6 +90,27 @@ module.exports = {
 					},
 					{
 						loader:  'sass-loader',
+						options: {
+							sourceMap: true
+						}
+					}
+				]
+			},
+			{
+				test: /\.less$/,
+				use:  [
+//					process.env.NODE_ENV !== 'production'
+//					? 'style-loader'
+//					:
+					MiniCssExtractPlugin.loader,
+					{
+						loader:  'css-loader',
+						options: {
+							sourceMap: true
+						}
+					},
+					{
+						loader:  'less-loader',
 						options: {
 							sourceMap: true
 						}
